@@ -1,0 +1,23 @@
+.containers{
+    display:flex;
+  }
+  .sidebar{
+    background:#15192b;
+    color:"";
+    height: 100vh;
+    width: 250px;
+    
+    overflow-x: hidden;
+    position: fixed;
+  }
+  .top{
+    display: flex;
+    align-items:center;
+    padding:20px 15px;
+  }
+  main{
+    height: 100vh;
+    width: 100%;
+    background-color: beige;
+    margin-left: 250px;
+  }
