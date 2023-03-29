@@ -1,15 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Carousel from "react-elastic-carousel";
 import "../Style/Home.css";
-import { Row, Col, Button } from "reactstrap";
+import { Row, Col, Button, Modal, ModalBody, ModalHeader } from "reactstrap";
 import Time from "../../Assets/Image/TimeSheet.png"
-import Team from "../../Assets/Image/My Team.png"
+import Teams from "../../Assets/Image/My Team.png"
 import Details from "../../Assets/Image/My Details.png"
 import Night from "../../Assets/Image/Night.png"
 import Chat from "../../Assets/Image/Chat.png";
 import { useNavigate } from "react-router-dom";
 import video from "../../Assets/Video/BI.mp4"
+import { Segment } from "semantic-ui-react";
+import ChatBot from "react-simple-chatbot";
+import "../Style/Chat.css";
 
 
 
@@ -37,17 +40,21 @@ const breakPoints = [
 ];
 
 export default function Home() {
+
+    const [Open, setOpen] = useState(false);
+
     const navigate = useNavigate();
 
     const handle = () => {
         navigate("/night")
     }
 
-    const Team = () =>{
-        navigate("/chat")
+    const Team = () => {
+        setOpen(true)
     }
     return (
         <div className="con" >
+
             <video src={video} autoPlay loop muted className="video_bg" />
 
             <h1 style={{ textAlign: "center" }}>Welcome To Prowesstics Employee Login</h1>
@@ -87,7 +94,7 @@ export default function Home() {
                     <Item>
                         <Row>
                             <Col>
-                                <img src={Team} height={50} style={{ borderRadius: "" }} />
+                                <img src={Teams} height={50} style={{ borderRadius: "" }} />
                             </Col>
                         </Row>
 
@@ -203,7 +210,7 @@ export default function Home() {
 
                         <Row className="mt-5">
                             <Col>
-                                <Button onClick={Team} className="TimeSheetButton">Night shift</Button>
+                                <Button onClick={Team} className="TimeSheetButton">Team Chats</Button>
                             </Col>
                         </Row>
 
@@ -212,7 +219,36 @@ export default function Home() {
 
                 </Carousel>
             </div>
-          
+            <div style={{ position: "absolute", right: "0px" }}>
+                <Modal
+                    isOpen={Open}
+                    toggle={() => setOpen(!Open)}>
+                    <ModalHeader
+                        toggle={() => setOpen(!Open)}
+                    >
+                       
+                    </ModalHeader>
+                    <ModalBody>
+                        <Segment floated="right" >
+                            <ChatBot steps={[
+                                {
+                                    id: 'intro',
+                                    message: 'Hello. What is your name?',
+                                    trigger: 'intro-user',
+                                },
+                                {
+                                    id: 'intro-user',
+                                    user: true,
+                                    end: true,
+                                },
+                            ]} />
+                        </Segment>
+
+                    </ModalBody>
+                </Modal>
+
+            </div>
+
 
         </div>
     );

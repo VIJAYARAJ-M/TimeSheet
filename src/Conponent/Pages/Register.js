@@ -4,7 +4,9 @@ import { FaUserCircle } from "react-icons/fa";
 
 export default function Register() {
 
-    const url =""
+    const url = "http://localhost:4000/register"
+
+    
     const [Data, setData] = useState({
         Username: "",
         Email: "",
@@ -26,6 +28,7 @@ export default function Register() {
 
         fetch(url, {
             method: 'POST',
+            //mode: 'no-cors',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'

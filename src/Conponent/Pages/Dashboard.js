@@ -122,14 +122,14 @@ export default function Dashboard() {
               }}>
               <Row className="align-items-center">
 
-                <Col lg={8}>
-                  <h5>TimeSheet</h5>
+                <Col lg={9}>
+                  <h5>NightShift</h5>
                 </Col>
                 {/* <Col lg={4}>
                   <Button onClick={onClick}>Dashboard</Button>
                 </Col> */}
-                <Col lg={4}>
-                  <Button className="a" onClick={Click}>Add NightSheet</Button>
+                <Col lg={3} className="d-flex align-items-end">
+                  <Button className="btnAdd" onClick={Click}>Add Form</Button>
                 </Col>
 
               </Row>
@@ -150,7 +150,8 @@ export default function Dashboard() {
               </thead>
               {table.map((item, index) => (
                 <tbody  >
-                  <tr key={index} className="" style={{ color: "var(--text-primary)" }}>
+                  <tr key={index} className="" style={{ color: "var(--text-primary)", 
+                  backgroundColor: "#e0e0e0" }}>
                     <td>{item.name}</td>
                     <td scope="row">{item.date}</td>
                     <td scope="row">{item.from}</td>
